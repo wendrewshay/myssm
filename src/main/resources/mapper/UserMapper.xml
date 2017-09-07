@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd" >
+<mapper namespace="com.xx.ssm.dao.UserDao">
+  
+  <select id="findById" parameterType="Long" resultType="com.xx.ssm.domain.User">
+  	select userid,username,age,gender from user where userid = #{value}
+  </select>
+  
+</mapper>
