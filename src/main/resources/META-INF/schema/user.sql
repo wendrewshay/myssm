@@ -31,4 +31,4 @@ CREATE TABLE `user` (
 -- ----------------------------
 -- Records of soa_user
 -- ----------------------------
-INSERT INTO `soa_user` VALUES ('1', '夏文强', '123456', '25', '男');
+INSERT INTO `user` VALUES ('1', '夏文强', '123456', '25', '男');
