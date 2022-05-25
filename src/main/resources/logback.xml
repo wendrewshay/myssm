@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration>
+<configuration debug="false"
+			   xmlns="http://ch.qos.logback/xml/ns/logback"
+			   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+			   xsi:schemaLocation="http://ch.qos.logback/xml/ns/logback http://ch.qos.logback/xml/ns/logback/logback.xsd">
+	<contextName>ssm</contextName>
+
+	<timestamp key="byMonth" datePattern="yyyyMM"/>
+	<timestamp key="byDay" datePattern="yyyyMMdd"/>
+	
+	<property name="log.filePath" value="${user.dir}/logs/webapp"/>
+	<property name="log.level" value="debug"/>
+	<property name="log.maxFileSize" value="80MB"/>
+	<property name="log.totalSizeCap" value="2GB"/>
+	<property name="log.maxHistory" value="25"/>
+	<property name="log.pattern" value="%date -| %level [%thread] %logger{10} [%file:%line] -| %msg%n"/>
+	
+	<!-- debug级别 -->
+  	<appender name="DEBUG_APPENDER" class="ch.qos.logback.core.rolling.RollingFileAppender">
+  		<file>${log.filePath}/debug.log</file>
+	    <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">   
+		    <fileNamePattern>${log.filePath}/debug/debug.%d{yyyy-MM-dd}.%i.log.gz</fileNamePattern>
+	      	<maxFileSize>${log.maxFileSize}</maxFileSize>   
+		    <totalSizeCap>${log.totalSizeCap}</totalSizeCap>
+		    <maxHistory>${log.maxHistory}</maxHistory>
+	    </rollingPolicy>
+	    <filter class="ch.qos.logback.classic.filter.LevelFilter">  
+	      	<level>DEBUG</level>  
+	      	<onMatch>ACCEPT</onMatch>  
+	      	<onMismatch>DENY</onMismatch>  
+	    </filter>  
+	    <encoder>   
+	    	<pattern>${log.pattern}</pattern>
+			<charset>utf-8</charset>
+	    </encoder>   
+  	</appender>
+  	<!-- info级别 -->
+  	<appender name="INFO_APPENDER" class="ch.qos.logback.core.rolling.RollingFileAppender"> 
+  		<file>${log.filePath}/info.log</file>
+	    <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">   
+		    <fileNamePattern>${log.filePath}/info/info.%d{yyyy-MM-dd}.%i.log.gz</fileNamePattern>
+	      	<maxFileSize>${log.maxFileSize}</maxFileSize>
+		    <totalSizeCap>${log.totalSizeCap}</totalSizeCap>
+		    <maxHistory>${log.maxHistory}</maxHistory>
+	    </rollingPolicy>
+	    <filter class="ch.qos.logback.classic.filter.LevelFilter">  
+	      	<level>INFO</level>  
+	      	<onMatch>ACCEPT</onMatch>  
+	      	<onMismatch>DENY</onMismatch>  
+	    </filter>
+	    <encoder>   
+	    	<pattern>${log.pattern}</pattern>
+			<charset>utf-8</charset>
+	    </encoder>   
+  	</appender>
+  	<!-- warn级别 -->
+  	<appender name="WARN_APPENDER" class="ch.qos.logback.core.rolling.RollingFileAppender"> 
+  		<file>${log.filePath}/warn.log</file>
+	    <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">   
+		    <fileNamePattern>${log.filePath}/warn/warn.%d{yyyy-MM-dd}.%i.log.gz</fileNamePattern>
+	      	<maxFileSize>${log.maxFileSize}</maxFileSize>   
+		    <totalSizeCap>${log.totalSizeCap}</totalSizeCap>
+		    <maxHistory>${log.maxHistory}</maxHistory>
+	    </rollingPolicy>
+	    <filter class="ch.qos.logback.classic.filter.LevelFilter">  
+	      	<level>WARN</level>  
+	      	<onMatch>ACCEPT</onMatch>  
+	      	<onMismatch>DENY</onMismatch>  
+	    </filter>
+	    <encoder>   
+	    	<pattern>${log.pattern}</pattern>
+			<charset>utf-8</charset>
+	    </encoder>   
+  	</appender>
+  	<!-- error级别 -->
+  	<appender name="ERROR_APPENDER" class="ch.qos.logback.core.rolling.RollingFileAppender"> 
+  		<file>${log.filePath}/error.log</file>
+	    <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">   
+		    <fileNamePattern>${log.filePath}/error/error.%d{yyyy-MM-dd}.%i.log.gz</fileNamePattern>
+	      	<maxFileSize>${log.maxFileSize}</maxFileSize>   
+		    <totalSizeCap>${log.totalSizeCap}</totalSizeCap>
+		    <maxHistory>${log.maxHistory}</maxHistory>
+	    </rollingPolicy>
+	    <filter class="ch.qos.logback.classic.filter.LevelFilter">  
+	      	<level>ERROR</level>  
+	      	<onMatch>ACCEPT</onMatch>  
+	      	<onMismatch>DENY</onMismatch>  
+	    </filter>
+	    <encoder>   
+	    	<pattern>${log.pattern}</pattern>
+			<charset>utf-8</charset>
+	    </encoder>   
+  	</appender>
+  	<!-- 控制台输出 -->
+  	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+	    <encoder>
+      		<pattern>%date [%thread] %-5level %logger{35} - %msg %n</pattern>
+	    </encoder>
+  	</appender>
+  	
+  	<logger name="com.xx.ssm" level="${log.level}">
+  		<appender-ref ref="DEBUG_APPENDER" />
+  		<appender-ref ref="INFO_APPENDER" />
+  		<appender-ref ref="WARN_APPENDER" />
+  		<appender-ref ref="ERROR_APPENDER" />
+  	</logger>
+  	
+  	<root level="INFO">
+   		<appender-ref ref="STDOUT" />
+  	</root>
+</configuration>
