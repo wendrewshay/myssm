@@ -1,5 +1,7 @@
 import com.xx.ssm.domain.User;
 import com.xx.ssm.service.A;
+import com.xx.ssm.service.Person;
+import com.xx.ssm.service.Student;
 import com.xx.ssm.service.UserService;
 import org.junit.After;
 import org.junit.Before;
@@ -28,6 +30,12 @@ public class SpringTests {
     public void test2() {
         A a = context.getBean(A.class);
         System.out.println(a.doMethodA());
+    }
+
+    @Test
+    public void test3() {
+        Person student = (Person)context.getBean("student");
+        student.say();
     }
 
     @After
