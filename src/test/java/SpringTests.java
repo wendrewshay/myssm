@@ -43,8 +43,8 @@ public class SpringTests {
      */
     @Test
     public void test3() {
-        Person student = (Person)context.getBean("student");
-        student.say();
+        Person person = context.getBean(Person.class);
+        person.say();
     }
 
     @After
