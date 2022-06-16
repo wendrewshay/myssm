@@ -1,7 +1,6 @@
 import com.xx.ssm.domain.User;
 import com.xx.ssm.service.A;
 import com.xx.ssm.service.Person;
-import com.xx.ssm.service.Student;
 import com.xx.ssm.service.UserService;
 import org.junit.After;
 import org.junit.Before;
@@ -43,6 +42,7 @@ public class SpringTests {
      */
     @Test
     public void test3() {
+        // 不仅开启aop代理中的proxy-target-class属性，且事务管理器的proxy-target-class属性设置也会影响到全局代理的创建是jdk代理还是CGLIB代理
         Person person = context.getBean(Person.class);
         person.say();
     }
