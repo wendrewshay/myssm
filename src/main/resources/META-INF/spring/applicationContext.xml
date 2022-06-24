@@ -60,7 +60,7 @@
 		<property name="basePackage" value="com.xx.ssm.dao" />
 		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory" />
 	</bean>
-	
+
 	<!-- 开启事务 -->
 	<!-- 此处事务管理器的proxy-target-class属性设置会影响到全局代理的创建是jdk代理还是CGLIB代理 -->
 	<tx:annotation-driven transaction-manager="transactionManager" proxy-target-class="false"/>
