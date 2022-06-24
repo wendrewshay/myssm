@@ -12,25 +12,31 @@ public class AspectJTest {
     public void test() {}
 
     @Before("test()")
-    public void before() {
+    public void doMyBefore() {
         System.out.println("before test..");
     }
 
     @After("test()")
-    public void after() {
+    public void doMyAfter() {
         System.out.println("after test..");
     }
 
     @Around("test()")
-    public Object around(ProceedingJoinPoint p) {
-        System.out.println("before1");
+    public Object doMyAround(ProceedingJoinPoint p) {
+        System.out.println("around--before..");
         Object o = null;
         try {
             o = p.proceed();
         } catch (Throwable throwable) {
             throwable.printStackTrace();
         }
-        System.out.println("after1");
+        System.out.println("around--after..");
         return o;
     }
+
+    @AfterReturning("test()")
+    public void doMyAfterReturning() {
+        System.out.println("after returning..");
+    }
+
 }
