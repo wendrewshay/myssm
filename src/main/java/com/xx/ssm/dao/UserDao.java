@@ -23,5 +23,5 @@ public interface UserDao {
 	List<User> findList(Map<String, Integer> params);
 
 	@Options(flushCache = Options.FlushCachePolicy.TRUE)
-	int updateUsername(@Param("username") String username, @Param("userid") Integer userid);
+	int updateUsername(@Param("username") String username, @Param("userid") Long userid);
 }

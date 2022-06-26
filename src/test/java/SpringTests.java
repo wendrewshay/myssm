@@ -57,6 +57,15 @@ public class SpringTests {
         bear.say();
     }
 
+    /**
+     * 测试spring事务
+     */
+    @Test
+    public void test5() {
+        userService = context.getBean(UserService.class);
+        userService.updateUsername(2L, "_testTxn");
+    }
+
     @After
     public void afterTest1() {
         context.close();

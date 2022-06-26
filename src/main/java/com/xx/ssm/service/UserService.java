@@ -21,7 +21,6 @@ import java.util.Map;
  *      
  */
 @Service
-@Transactional
 public class UserService {
 
 	@Autowired
@@ -41,10 +40,16 @@ public class UserService {
 		params.put("offset", 0);
 		params.put("pageSize", 2);
 		System.out.println(userDao.findList(params));
-        userDao.updateUsername("张三丰", 1);
+        userDao.updateUsername("张三丰", 1L);
 		List<User> list = userDao.findList(params);
 		System.out.println(list);
 //		sqlSession.commit();
 		return list;
+	}
+
+	@Transactional(rollbackFor = Exception.class)
+	public void updateUsername(Long userid, String username) {
+		User user = userDao.findById(userid);
+		userDao.updateUsername(user.getUsername() + username, userid);
 	}
 }
