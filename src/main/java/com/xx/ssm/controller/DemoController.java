@@ -44,10 +44,10 @@ public class DemoController {
 	 */
 	@PostMapping("/user/query")
 	@ResponseBody
-	public String demo(Long userid) {
+	public User query(Long userid) {
 		User user = userService.queryUserById(userid);
 		LOG.info("userService's type is : " + userService.getClass().getName());
-		return user != null ? user.toString() : null;
+		return user;
 	}
 
 	/**
