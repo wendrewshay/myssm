@@ -30,6 +30,14 @@
 			</bean>
 		</mvc:message-converters>
 	</mvc:annotation-driven>
+
+	<!-- 自定义拦截器 -->
+	<mvc:interceptors>
+		<mvc:interceptor>
+			<mvc:mapping path="/**"/>
+			<bean class="com.xx.ssm.config.MyHandlerInterceptor"></bean>
+		</mvc:interceptor>
+	</mvc:interceptors>
 	
 	<!-- 视图解析器配置 -->
 	<mvc:view-resolvers>

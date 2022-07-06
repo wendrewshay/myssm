@@ -4,6 +4,9 @@ import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.config.BeanPostProcessor;
 import org.springframework.stereotype.Component;
 
+/**
+ * Bean初始化后处理器
+ */
 //@Component
 public class LogPostProcessor implements BeanPostProcessor {
 
